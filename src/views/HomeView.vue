@@ -1,5 +1,9 @@
 <template>
-  <div class="home">
-    <h1>Welcome to Your Vue.js App</h1>
-  </div>
+  <h1>Hello World!</h1>
 </template>
+
+<script>
+export default {
+  name: "HomeView",
+};
+</script>
