@@ -1,8 +1,20 @@
-# ZGas
+# ZGas - Version a1.0 (Pre Deploy)
 
 ## Made with :heart: by @Zilloww
 
 Manage your Gas Expenses from now.
+
+---
+
+### Changelogs
+
+- Version a1.0 (Pre Deploy)
+  - Git repo creation
+  - Vuetify installation
+  - Functional prototype UI creation with Dummy Data
+  - Firebase project creation (Backend setup in future release.)
+
+---
 
 ## Project setup
 
