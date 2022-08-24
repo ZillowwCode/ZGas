@@ -13,6 +13,10 @@ Manage your Gas Expenses from now.
   - Vuetify installation
   - Functional prototype UI creation with Dummy Data
   - Firebase project creation (Backend setup in future release.)
+- Version a1.1 (Pre Deploy)
+  - Pinia Store creation
+  - Firebase Auth services creation
+  - Functionnal Google SignIn with Pinia store
 
 ---
 
