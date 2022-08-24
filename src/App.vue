@@ -17,6 +17,7 @@
 <script>
 import { auth } from '@/firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import { useAuthStore } from '@/store/auth';
 
 export default {
   name: "App",
@@ -29,11 +30,15 @@ export default {
   mounted() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        const authStore = useAuthStore();
         this.currentUser = user;
         this.isLoggedIn = true;
+        authStore.setUser(user);
       } else {
+        const authStore = useAuthStore();
         this.currentUser = false;
         this.isLoggedIn = false;
+        authStore.clearUser();
       }
     })
   }

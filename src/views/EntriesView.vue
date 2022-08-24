@@ -52,6 +52,8 @@
 </template>
 
 <script>
+import { createEntry } from "@/firebase/services/entries";
+
 export default {
   name: "EntriesView",
   data() {
@@ -68,7 +70,8 @@ export default {
       if (this.newFilled === 0) return;
       if (this.newPaid === 0) return;
 
-      console.log("New entry");
+      // TODO: Create new document in db [users/:uid/entries/:id]
+      createEntry(this.newPrice, this.newFilled, this.newPaid);
 
       this.entries.push({
         date: Date.now(),
