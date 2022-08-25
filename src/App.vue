@@ -16,7 +16,6 @@
 
 <script>
 import { auth } from '@/firebase/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
 import { useAuthStore } from '@/store/auth';
 
 export default {
@@ -28,7 +27,7 @@ export default {
     }
   },
   mounted() {
-    onAuthStateChanged(auth, (user) => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         const authStore = useAuthStore();
         this.currentUser = user;
@@ -40,7 +39,7 @@ export default {
         this.isLoggedIn = false;
         authStore.clearUser();
       }
-    })
+    });
   }
 };
 </script>

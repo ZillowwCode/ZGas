@@ -20,7 +20,6 @@
       </v-row>
       <v-btn color="primary" type="submit" block>Nouvelle saisie</v-btn>
     </v-form>
-
     <v-table v-if="entries.length" class="mt-4">
       <thead>
         <tr>
@@ -32,13 +31,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="entrie in entries" :key="entrie.price">
+        <tr v-for="entrie in entries" :key="entrie.id">
           <td>{{ entrie.date }}</td>
           <td>{{ entrie.price }}</td>
           <td>{{ entrie.filled }}</td>
           <td>{{ entrie.paid }}</td>
           <td>
-            <v-btn icon @click="deleteEntry(entrie.price)"
+            <v-btn icon @click="deleteEntry(entrie.id, currentUser.uid)"
               ><v-icon color="error">mdi-delete</v-icon></v-btn
             >
           </td>
@@ -52,7 +51,9 @@
 </template>
 
 <script>
-import { createEntry } from "@/firebase/services/entries";
+import { createEntry, deleteEntry } from "@/firebase/services/entries";
+import { useAuthStore } from "@/store/auth"
+// import { storeToRefs } from "pinia";
 
 export default {
   name: "EntriesView",
@@ -65,13 +66,12 @@ export default {
     };
   },
   methods: {
-    createEntry() {
+    async createEntry() {
       if (this.newPrice === 0) return;
       if (this.newFilled === 0) return;
       if (this.newPaid === 0) return;
 
-      // TODO: Create new document in db [users/:uid/entries/:id]
-      createEntry(this.newPrice, this.newFilled, this.newPaid);
+      await createEntry(this.newPrice, this.newFilled, this.newPaid);
 
       this.entries.push({
         date: Date.now(),
@@ -81,13 +81,23 @@ export default {
       });
     },
 
-    deleteEntry(price) {
-      const remainingEntries = this.entries.filter(
-        (entry) => entry.price !== price
-      );
-      this.entries = remainingEntries;
+    async deleteEntry(_id, _uid) {
+      await deleteEntry(_id, _uid);
     },
   },
+  beforeMount() {
+    const authStore = useAuthStore();
+    this.currentUser = authStore.getCurrentUser;
+  },
+  mounted() {
+    console.log(this.currentUser);
+  },
+  computed: {
+    currentUser() {
+      const authStore = useAuthStore();
+      return authStore.currentUser;
+    }
+  }
 };
 </script>
 

@@ -32,4 +32,8 @@ const globalSignOut = async () => {
     authStore.clearUser();
 }
 
-export { googleSignIn, globalSignOut }
+const getCurrentUser = async () => {
+    return await auth.currentUser;
+}
+
+export { googleSignIn, globalSignOut, getCurrentUser }
