@@ -11,6 +11,9 @@ const routes = [
     path: "/entries",
     name: "entries",
     component: () => import("@/views/EntriesView.vue"),
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: "/signin",
@@ -20,7 +23,10 @@ const routes = [
   {
     path: "/signout",
     name: "signout",
-    component: () => import("@/views/Auth/SignOutView.vue")
+    component: () => import("@/views/Auth/SignOutView.vue"),
+    meta: {
+      requiresAuth: true
+    }
   }
 ];
 
