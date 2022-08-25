@@ -10,13 +10,15 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
+console.log(process.env)
+
 const firebaseConfig = {
-  apiKey: "AIzaSyA3Z_XvQmodJjwqraukUKwGO53VxACd8S8",
-  authDomain: "zgas-23504.firebaseapp.com",
-  projectId: "zgas-23504",
-  storageBucket: "zgas-23504.appspot.com",
-  messagingSenderId: "402799427162",
-  appId: "1:402799427162:web:6d4a531c90c946ef426263"
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+  projectId: process.env.VUE_APP_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
