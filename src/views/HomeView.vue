@@ -1,5 +1,6 @@
 <template>
   <div class="home-view">
+    <h1 class="text-h3 mt-4 text-red text-center mb-10">Cette application est un prototype.<br/>L'Interface utilisateur et la fonctionnalité sont en cours d'évolution.</h1>
     <h1 class="text-h2 mt-4" v-if="!currentUser">Accueil</h1>
     <h1 class="text-h2 mt-4" v-else>Bonjour, {{ currentUser.displayName }}.</h1>
     <v-btn v-if="currentUser" append-icon="mdi-arrow-right" class="mt-4" color="primary" :to="{ name: 'entries' }">Voir mes saisies</v-btn>
