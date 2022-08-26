@@ -1,17 +1,17 @@
 import { db } from "@/main";
 import { getAuth } from "firebase/auth";
-import { collection, addDoc, query, orderBy, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { collection, addDoc, query, orderBy, getDocs, deleteDoc, doc, Timestamp } from "firebase/firestore";
 
 const newEntry = async (_price, _filled, _paid) => {
     const auth = await getAuth();
     const userEntriesRef = await collection(db, "users/" + auth.currentUser.uid + "/entries");
-    await addDoc(userEntriesRef, {
+    const docRef = await addDoc(userEntriesRef, {
         price: _price,
         filled: _filled,
         paid: _paid,
-        date: Date.now()
+        date: Timestamp.now(),
     })
-    const entrie = { price: _price, filled: _filled, paid: _paid, date: Date.now() }
+    const entrie = { id: docRef.id, price: _price, filled: _filled, paid: _paid, date: Timestamp.now().toDate().toLocaleDateString() }
     return entrie;
 }
 
@@ -24,7 +24,7 @@ const getEntries = async () => {
     querySnapshot.forEach((doc) => {
         dbEntries.push({
             id: doc.id,
-            date: doc.data().date,
+            date: doc.data().date.toDate().toLocaleDateString(),
             price: doc.data().price,
             filled: doc.data().filled,
             paid: doc.data().paid
