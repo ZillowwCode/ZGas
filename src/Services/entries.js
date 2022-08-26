@@ -37,7 +37,6 @@ const getEntries = async () => {
 const deleteEntrie = async (_id, _entries) => {
     const auth = getAuth();
     const userEntriesRef = await collection(db, "users/" + auth.currentUser.uid + "/entries");
-    console.log(userEntriesRef);
     await deleteDoc(await doc(userEntriesRef, _id));
 
     const frontEntries = _entries;
