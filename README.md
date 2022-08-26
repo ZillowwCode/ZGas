@@ -1,4 +1,4 @@
-# ZGas - Version a1.1 (Pre Deploy)
+# ZGas - Version a1.2 (Pre Deploy)
 
 ## Made with :heart: by @Zilloww
 
