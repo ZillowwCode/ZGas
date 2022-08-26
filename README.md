@@ -6,17 +6,7 @@ Manage your Gas Expenses from now.
 
 ---
 
-### Changelogs
-
-- Version a1.1 (Pre Deploy)
-  - Pinia Store creation
-  - Firebase Auth services creation
-  - Functionnal Google SignIn with Pinia store
-- Version a1.0 (Pre Deploy)
-  - Git repo creation
-  - Vuetify installation
-  - Functional prototype UI creation with Dummy Data
-  - Firebase project creation (Backend setup in future release.)
+### [Releases Changelogs](https://github.com/ZillowwCode/ZGas/releases "Releases")
 
 ---
 
